@@ -1,8 +1,7 @@
-# React + Vite
+# Ejercicio 4
+---
+## Trabajo Práctico de React RollingCodeSchool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En este programa se creó una lista de tareas que agrega y borra tareas agregadas mediante un form y las va agregando en una lista... Programa Realizado con **React**
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*Armas Mauro Nahuel*
