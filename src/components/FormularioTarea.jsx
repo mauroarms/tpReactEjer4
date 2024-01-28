@@ -6,11 +6,16 @@ const FormularioTarea = () => {
   const [tarea, setTarea] = useState("");
   const [arrayTarea, setArrayTarea] = useState([]);
 
-  const handleSubmit = (event) =>{
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setArrayTarea([...arrayTarea,tarea])
-    setTarea("")
-  }
+    setArrayTarea([...arrayTarea, tarea]);
+    setTarea("");
+  };
+
+  const borrarTarea = (nombreTarea) => {
+    const arregloFiltrado = arrayTarea.filter((tarea) => tarea !== nombreTarea);
+    setArrayTarea(arregloFiltrado);
+  };
 
   return (
     <>
@@ -24,18 +29,14 @@ const FormularioTarea = () => {
               onChange={(e) => setTarea(e.target.value)}
               value={tarea}
             />
-            <Button
-              className="btnAgregar"
-              variant="outline-dark"
-              type="submit"
-            >
+            <Button className="btnAgregar" variant="outline-dark" type="submit">
               Agregar
             </Button>
           </div>
         </Form.Group>
       </Form>
 
-      <ListaTareas arrayTarea={arrayTarea} ></ListaTareas>
+      <ListaTareas arrayTarea={arrayTarea} borrarTarea={borrarTarea}></ListaTareas>
     </>
   );
 };
