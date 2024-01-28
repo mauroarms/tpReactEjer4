@@ -1,20 +1,55 @@
 import { Button, Form } from "react-bootstrap";
 import ListaTareas from "./ListaTareas";
 import { useState } from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 const FormularioTarea = () => {
+  const MySwal = withReactContent(Swal)
   const [tarea, setTarea] = useState("");
   const [arrayTarea, setArrayTarea] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setArrayTarea([...arrayTarea, tarea]);
-    setTarea("");
+
+    if(arrayTarea.includes(tarea)){
+      MySwal.fire({
+        icon: "error",
+        title: "¡Error!",
+        text: "La tarea ingresada ya existe",
+        
+      });
+    }else{
+      setArrayTarea([...arrayTarea, tarea]);
+      setTarea("");
+    }
+
   };
 
   const borrarTarea = (nombreTarea) => {
-    const arregloFiltrado = arrayTarea.filter((tarea) => tarea !== nombreTarea);
-    setArrayTarea(arregloFiltrado);
+
+    Swal.fire({
+      title: "¿Estás Seguro?",
+      text: "La tarea se borrará definitivamente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonColor: "#3085d6",
+      confirmButtonColor: "#d33",
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Tarea Borrada Correctamente",
+          text: "La tarea fue eliminada",
+          icon: "success"
+        });
+        const arregloFiltrado = arrayTarea.filter((tarea) => tarea !== nombreTarea);
+        setArrayTarea(arregloFiltrado);
+      }
+    });
+
   };
 
   return (
