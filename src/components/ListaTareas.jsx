@@ -5,8 +5,7 @@ const ListaTareas = () => {
   return (
     <ListGroup as="ol" numbered className="mt-5">
       <ItemLista></ItemLista>
-      <ItemLista></ItemLista>
-      <ItemLista></ItemLista>
+
     </ListGroup>
   );
 };
